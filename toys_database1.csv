@@ -1,0 +1,83 @@
+Toy Name,Price,For Boys,For Girls,Requires Movement,For Outdoor Play,For Indoor Play,Educational,Electronic,Multiplayer,For One Person,Age Range 0-2,Age Range 3-5,Age Range 6-8,Age Range 9-12,Age Range 13+
+Фигурка солдата,120,True,False,True,False,True,False,False,False,True,False,True,True,False,False
+Кукла,100,False,True,False,False,True,False,False,False,True,True,True,False,False,False
+Машинка на пульте управления,250,True,True,True,True,False,False,True,False,True,False,False,True,True,False
+Пазлы,50,True,True,False,False,True,True,False,False,True,False,True,True,True,False
+Конструктор,200,True,True,False,False,True,True,False,True,False,False,True,True,False,False
+Мягкая игрушка,250,True,True,False,False,True,False,False,False,True,True,True,False,False,False
+Настольная игра,150,True,True,False,False,True,True,False,True,False,False,False,True,True,True
+Игрушечный барабан,100,True,True,True,False,True,False,False,False,True,True,True,False,False,False
+Пальчиковые краски,80,True,True,False,True,True,True,False,False,True,False,True,True,False,False
+Блокнот для рисования,50,True,True,False,False,True,True,False,False,True,False,False,True,True,True
+Пузыри,40,True,True,True,True,False,False,False,True,False,True,True,True,False,False
+Игрушечный набор для кухни,400,False,True,False,False,True,True,False,True,False,False,True,True,False,False
+Игрушечный набор доктора,450,True,True,True,False,True,True,False,True,True,False,True,True,False,False
+Рация,300,True,True,True,True,False,False,True,True,False,False,False,True,True,False
+Игрушечный телефон,200,True,True,False,False,True,True,True,False,True,True,True,False,False,False
+Игрушечный ноутбук,250,True,True,False,False,True,True,True,False,True,False,True,True,False,False
+Меч,350,True,False,True,True,True,False,False,True,False,False,False,True,True,False
+Камень-питомец,20,True,True,False,True,True,False,False,False,True,False,False,True,True,False
+Железная дорога,500,True,True,True,False,True,False,True,True,False,False,True,True,False,False
+Набор для магии,400,True,True,False,False,True,False,False,False,True,False,False,True,True,True
+Кубик-Рубика,150,True,True,False,False,True,True,False,False,True,False,False,True,True,True
+Фрисби,250,True,True,True,True,False,False,False,True,False,False,False,True,True,True
+Йо-йо,200,True,True,True,True,True,False,False,False,True,False,False,True,True,False
+Конструктор Марбл,1000,True,True,True,True,True,False,False,True,False,False,False,True,True,False
+Игрушечный робот,350,True,False,True,False,True,True,True,False,True,False,False,True,True,False
+Мяч,100,True,True,True,True,True,False,False,False,True,True,True,True,False,False
+Телескоп,600,True,True,False,False,True,True,False,False,True,False,False,True,True,False
+Тесто для игры,150,True,True,False,False,True,True,False,False,True,True,True,True,False,False
+Воздушный змей,250,True,True,True,True,False,False,False,True,False,False,True,True,True,False
+Вертолет,400,True,False,True,True,False,False,True,False,True,False,False,False,True,False
+Игрушечный кассовый аппарат,400,True,True,False,False,True,True,True,True,False,False,True,True,False,False
+Стетоскоп,150,True,True,False,False,True,True,False,True,False,False,True,True,False,False
+Игрушечный Верстак,500,True,True,True,False,True,True,False,True,True,False,True,True,False,False
+Лошадка-качалка,1100,True,True,True,False,True,False,False,False,True,True,True,False,False,False
+Образовательный планшет,300,True,True,False,False,True,True,True,False,True,False,True,True,False,False
+Раскраска,100,True,True,False,False,True,True,False,False,True,True,True,True,False,False
+Мини-баскетбольное кольцо,250,True,True,True,True,True,False,False,True,True,False,True,True,True,False
+Скакалка,100,True,True,True,True,True,False,False,True,True,False,False,True,True,True
+Игрушечный набор инструментов,450,True,True,False,False,True,True,False,True,False,False,True,True,False,False
+Игрушечный бинокль,500,True,True,False,True,False,True,False,False,True,False,True,True,True,False
+Надувной бассейн,1500,True,True,True,True,False,False,False,True,False,False,True,True,True,False
+Трехколесный велосипед,2500,True,True,True,True,False,False,False,False,True,True,True,False,False,False
+Водный пистолет,250,True,True,True,True,False,False,False,True,True,False,True,True,True,False
+Балансировочный велосипед,2000,True,True,True,True,False,True,False,False,True,False,True,True,False,False
+Игрушечный микрофон,500,True,True,True,False,True,False,True,False,True,False,True,True,False,False
+Набор для песочницы,100,True,True,False,True,False,True,False,True,False,False,True,True,False,False
+Мозаика,250,True,True,False,False,True,True,False,False,True,False,False,True,True,True
+Игрушечный микроскоп,900,True,True,False,False,True,True,False,False,True,False,False,True,True,False
+Палатка-домик для игр,1900,True,True,True,True,True,False,False,True,False,True,True,True,False,False
+Набор полицейского,900,True,False,True,False,True,True,False,True,True,False,True,True,False,False
+Гоночная машинка,440,True,False,True,False,True,False,True,False,True,False,False,True,True,False
+Алфавитные блоки,300,True,True,False,False,True,True,False,False,True,True,True,False,False,False
+Игрушечные животные,500,True,True,False,False,True,False,False,False,True,True,True,True,False,False
+Набор рыбака,500,True,True,True,True,False,True,False,True,False,False,True,True,False,False
+Игрушечный трактор,400,True,True,False,False,True,False,False,False,True,True,True,True,False,False
+Билеты банка приколов,50,True,True,False,False,True,True,True,True,False,False,True,True,False,False
+Набор для выживания,450,True,True,False,True,False,True,False,True,False,False,True,True,True,False
+Фигурка бродяги,250,False,True,True,True,True,False,False,False,True,True,True,False,False,False
+Фигурка кассира,250,False,True,False,False,True,True,True,False,True,False,True,True,False,False
+Игрушечная газонокосилка,700,True,True,True,True,True,False,True,False,True,False,True,True,False,False
+Замок,1000,True,True,False,False,True,False,False,True,False,False,True,True,True,False
+Игрушечный молоток,250,True,False,True,False,True,False,False,False,True,False,True,True,False,False
+Игрушечные ножницы,250,True,True,False,False,True,True,False,False,True,False,False,True,True,False
+Набор ученого,500,True,True,False,False,True,True,False,True,False,False,False,True,True,True
+Электрическая железная дорога,1550,True,True,True,False,True,False,True,True,True,False,True,True,True,False
+Большой робот,1000,True,True,False,False,True,True,True,False,True,False,False,True,True,False
+Набор химика,800,True,True,False,False,True,True,False,True,False,False,False,False,True,True
+Самолет с дистанционным управлением,1700,True,True,True,True,False,False,True,True,True,False,False,True,True,False
+Декорации для кукольного театра,250,False,True,True,False,True,True,False,True,False,True,True,True,False,False
+Набор шаров,200,True,True,False,False,True,True,False,True,False,False,False,True,True,False
+Художественный мольберт,400,True,True,False,False,True,True,False,False,True,False,False,True,True,True
+Конструктор,150,True,True,True,True,True,True,False,True,True,True,True,True,True,True
+Плюшевый мишкa,80,True,True,False,False,True,False,False,False,True,True,True,True,False,False
+Набор для творчества,200,True,True,False,True,True,True,False,True,True,False,True,True,True,False
+Настoльная игра,300,True,True,True,False,True,False,False,True,False,False,True,True,True,True
+Спoртивный мяч,100,True,True,True,True,True,False,False,True,False,False,True,True,True,False
+Робот-игрушка,400,True,True,True,True,True,True,True,False,True,True,True,True,True,False
+Huddy,500,True,True,True,True,True,False,True,True,True,False,True,True,True,True
+Кубики 2,70,True,True,False,False,True,True,False,False,True,True,True,True,False,False
+Игроваяя палатка,220,True,True,True,True,True,False,False,True,False,True,True,True,False,False
+Магнитная дoска,250,True,True,False,False,True,True,False,False,True,False,True,True,True,False
+Легo,300,True,True,True,True,True,True,False,True,True,True,True,True,True,False
