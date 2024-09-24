@@ -1,9 +1,13 @@
 import sys
 import pandas as pd
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QInputDialog, QMessageBox, QPushButton
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QInputDialog, QMessageBox, QPushButton, \
+    QMainWindow, QListWidget
+
+import CSV_of_toys
+import List_of_toys
 
 
-class ToyQuestionnaireApp(QWidget):
+class ToyQuestionnaireApp(QMainWindow):
     def __init__(self, csv_file):
         super().__init__()
         self.toy_names = []
@@ -29,15 +33,22 @@ class ToyQuestionnaireApp(QWidget):
 
     def initUI(self):
         self.setWindowTitle("Настройки опроса")
-        layout = QVBoxLayout()
+
+        # Создаем центральный виджет
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+
+        layout = QVBoxLayout(central_widget)
 
         start_button = QPushButton("Начать опрос")
         start_button.clicked.connect(self.start_survey)
         layout.addWidget(start_button)
 
-        self.setLayout(layout)
-        self.resize(300, 200)  # Размер начального окна
-        self.setFixedSize(300, 200)  # Зафиксировать размер окна
+        list_toys_button = QPushButton("Список игрушек")
+        list_toys_button.clicked.connect(self.show_toys_list)  # Подключаем метод к кнопке
+        layout.addWidget(list_toys_button)  # Добавляем кнопку в layout
+        self.resize(600, 400)
+        self.setFixedSize(600, 400)
 
     def start_survey(self):
         self.close()
@@ -120,34 +131,20 @@ class ToyQuestionnaireApp(QWidget):
             # Получение названий игрушек
             toy_names = df['Toy Name']
             self.toy_names = toy_names.head(3).values  # Получаем только первые три названия
-            print("Выборка товаров для пользователя:\n", self.toy_names)  # Выводим подходящие игрушки
+            self.toy_names = toy_names.tolist()
+            self.toy_names_final = [self.toy_names[0], self.toy_names[1], self.toy_names[2]]
+            print("Выборка товаров для пользователя:\n", self.toy_names_final)  # Выводим подходящие игрушки
 
+            self.results_window = List_of_toys.MainWindow(self.toy_names_final)
+            self.results_window.show()
 
-    def show_results(self, toy_names_array):
-        results_window = QWidget()
-        results_window.setWindowTitle("Подходящие игрушки")
-        layout = QVBoxLayout()
-
-        if len(toy_names_array) > 0:  # Если есть игрушки
-            results_text = "\n".join(toy_names_array)  # Соединяем элементы массива в строку
-        else:
-            results_text = "Не найдено подходящих игрушек."
-
-        label = QLabel(results_text)
-        layout.addWidget(label)
-
-        close_button = QPushButton("Закрыть")
-        close_button.clicked.connect(results_window.close)
-        layout.addWidget(close_button)
-
-        results_window.setLayout(layout)
-        results_window.resize(300, 200)  # Установка размеров окна
-        results_window.move(400, 300)  # Установка положения окна на экране
-        results_window.show()
+    def show_toys_list(self):
+        self.toys_window = CSV_of_toys.MainWindow('C:/Users/User/Desktop/7 семестр/СППР/toys_database1.csv')  # Передаем список игрушек в ваше окно
+        self.toys_window.show()  # Показываем новое окно
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = ToyQuestionnaireApp('C:/Users/User/Desktop/7 семестр/СППР/toys_database1.csv')
     window.show()
-    sys.exit(app.exec_())
+    app.exec_()
