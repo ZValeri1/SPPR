@@ -30,5 +30,6 @@ class MainWindow(QWidget):
             # Добавляем каждую игрушку в виджет списка
             for toy in self.toys_list:
                 self.toy_list_widget.addItem(toy)
+                self.toy_list_widget.setStyleSheet("font-size: 20px;")
         except Exception as e:
             QMessageBox.critical(self, "Ошибка", str(e))

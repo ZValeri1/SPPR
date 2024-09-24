@@ -1,10 +1,12 @@
 import sys
 import pandas as pd
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QInputDialog, QMessageBox, QPushButton, \
-    QMainWindow, QListWidget
+from PyQt5.QtCore import Qt
 
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QInputDialog, QMessageBox, QPushButton, \
+    QMainWindow, QListWidget, QHBoxLayout
 import CSV_of_toys
-import List_of_toys
+import Questions
 
 
 class ToyQuestionnaireApp(QMainWindow):
@@ -28,7 +30,6 @@ class ToyQuestionnaireApp(QMainWindow):
             ("Какую максимальную сумму вы готовы потратить?", "Введите число")
         ]
         self.current_question_index = 0
-
         self.initUI()
 
     def initUI(self):
@@ -38,105 +39,53 @@ class ToyQuestionnaireApp(QMainWindow):
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
 
-        layout = QVBoxLayout(central_widget)
+        main_layout = QHBoxLayout(central_widget)  # Используем горизонтальный layout
 
+        # Настройка вертикального layout для кнопок
+        button_layout = QVBoxLayout()
+
+        # Изменяем фоновый цвет окна
+        self.setStyleSheet("background-color: #f0f0f0;")  # Светлый серый фон
+
+        # Настройка кнопки "Начать опрос"
         start_button = QPushButton("Начать опрос")
         start_button.clicked.connect(self.start_survey)
-        layout.addWidget(start_button)
+        start_button.setFixedSize(300, 100)  # Устанавливаем размеры кнопки
+        start_button.setStyleSheet(
+            "background-color: #4CAF50; color: white; font-size: 28px; border-radius: 10px;")  # Зеленая кнопка с белым текстом
+        button_layout.addWidget(start_button)
 
+        # Настройка кнопки "Список игрушек"
         list_toys_button = QPushButton("Список игрушек")
         list_toys_button.clicked.connect(self.show_toys_list)  # Подключаем метод к кнопке
-        layout.addWidget(list_toys_button)  # Добавляем кнопку в layout
-        self.resize(600, 400)
-        self.setFixedSize(600, 400)
+        list_toys_button.setFixedSize(300, 100)  # Устанавливаем размеры кнопки
+        list_toys_button.setStyleSheet(
+            "background-color: #2196F3; color: white; font-size: 28px; border-radius: 10px;")  # Синяя кнопка с белым текстом
+        button_layout.addWidget(list_toys_button)  # Добавляем кнопку в button_layout
+
+        # Добавление отступов между кнопками
+        button_layout.addSpacing(10)
+
+        # Добавление центрального вертикального layout в основной горизонтальный layout
+        main_layout.addLayout(button_layout)
+
+        # Добавление изображения в окно
+        photo_label = QLabel()
+        pixmap = QPixmap('C:/Users/User/Desktop/7 семестр/СППР/toys.png')
+        photo_label.setPixmap(pixmap)
+
+        # Зафиксируем размер изображения
+        #photo_label.setFixedSize(170, 170)  # Установите желаемые размеры для изображения
+        main_layout.addWidget(photo_label, alignment=Qt.AlignRight)  # Добавляем изображение справа
+
+        self.resize(700, 405)  # Размеры окна - увеличьте для лучшего отображения
+        self.setFixedSize(700, 405)  # Убедитесь, что окна фиксированы, как вам нужно
 
     def start_survey(self):
         self.close()
         self.current_question_index = 0
-        self.ask_question(self.current_question_index)
-    def ask_question(self, index):
-        if index < len(self.questions):
-            question_text, options = self.questions[index]
-            answer = None
-            if isinstance(options, list):
-                answer, ok = QInputDialog.getItem(self, "Question", question_text, options, 0, False)
-            else:
-                answer, ok = QInputDialog.getText(self, "Question", question_text)
-
-            if ok and answer:
-                self.answers[index] = answer
-                self.current_question_index += 1
-                self.ask_question(self.current_question_index)
-            else:
-                QMessageBox.warning(self, 'Input Error', 'Please provide an answer.')
-                self.ask_question(index)
-        else:
-            self.filter_toys()
-
-
-    def filter_toys(self):
-        try:
-            toys_df = pd.read_csv(self.csv_file)
-        except Exception as e:
-            QMessageBox.critical(self, "Error", f"Failed to read CSV file: {e}")
-            return
-        df = toys_df.copy()
-        print("Исходные данные:\n", df)
-        # Пример фильтрации базируясь на ответах
-        print("Ответы пользователя:\n", self.answers)
-
-        if self.answers[0] == '1 - Мальчик':
-            df = df[df["For Boys"]]
-        elif self.answers[0] == '2 - Девочка':
-            df = df[df['For Girls']]
-        print("После фильтрации по мальчикам/девочкам:\n", df)
-        if self.answers[1] == '1 - Да':
-            df = df[df['For Outdoor Play']]
-        elif self.answers[1] == '2 - Нет':
-            df = df[~df['For Outdoor Play']]
-        print("После фильтрации по игре на свежем воздухе:\n", df)
-        if self.answers[2] == '1 - Да':
-            df = df[df['Educational']]
-        elif self.answers[2] == '2 - Нет':
-            df = df[~df['Educational']]
-        print("После фильтрации по познавательности:\n", df)
-        if self.answers[3] == '1 - Да':
-            df = df[df['Requires Movement']]
-        elif self.answers[3] == '2 - Нет':
-            df = df[~df['Requires Movement']]
-        print("После фильтрации по движению:\n", df)
-        if self.answers[4] == '2 - Нет':
-            df = df[~df['Electronic']]
-        print("После фильтрации по электрике:\n", df)
-        if self.answers[5] == '1 - Для одного человека':
-            df = df[df['For One Person']]
-        elif self.answers[5] == '2 - Для двух и больше':
-            df = df[df['Multiplayer']]
-        print("После фильтрации по одиночной или игре в компании:\n", df)
-        if self.answers[6] == '1 - 0-2':
-            df = df[df['Age Range 0-2']]
-        elif self.answers[6] == '2 - 3-5':
-            df = df[df['Age Range 3-5']]
-        elif self.answers[6] == '3 - 6-8':
-            df = df[df['Age Range 6-8']]
-        elif self.answers[6] == '4 - 9-12':
-            df = df[df['Age Range 9-12']]
-        elif self.answers[6] == '5 - 13+':
-            df = df[df['Age Range 13+']]
-        print("После фильтрации по возрасту:\n", df)
-        max_price = self.answers[7]
-        if max_price.isdigit():
-            df = df[df['Price'] <= int(max_price)]
-
-            # Получение названий игрушек
-            toy_names = df['Toy Name']
-            self.toy_names = toy_names.head(3).values  # Получаем только первые три названия
-            self.toy_names = toy_names.tolist()
-            self.toy_names_final = [self.toy_names[0], self.toy_names[1], self.toy_names[2]]
-            print("Выборка товаров для пользователя:\n", self.toy_names_final)  # Выводим подходящие игрушки
-
-            self.results_window = List_of_toys.MainWindow(self.toy_names_final)
-            self.results_window.show()
+        self.questions = Questions.SurveyWindow('C:/Users/User/Desktop/7 семестр/СППР/toys_database1.csv')
+        self.questions.show()
 
     def show_toys_list(self):
         self.toys_window = CSV_of_toys.MainWindow('C:/Users/User/Desktop/7 семестр/СППР/toys_database1.csv')  # Передаем список игрушек в ваше окно
